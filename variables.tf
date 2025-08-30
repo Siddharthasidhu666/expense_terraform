@@ -32,3 +32,21 @@ variable "instance_names" {
     }
     
 }
+
+
+variable "inbound_rules" {
+    default = [
+        {
+         port = 22
+         protocol         = "tcp"
+         cidr_blocks      = ["0.0.0.0/0"]
+        },
+        {
+            port = 80,
+            protocol         = "tcp"
+            cidr_blocks      = ["0.0.0.0/0"]
+        }
+
+    ]
+  
+}

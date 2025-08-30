@@ -51,26 +51,27 @@ data "aws_ami" "ubuntu" {
 # }
 
 
-# resource "aws_instance" "example" {
-#   ami                    = data.aws_ami.ubuntu.id
-#   instance_type          = "t2.micro"
-#   vpc_security_group_ids = [aws_security_group.allow_tls.id]
-#   # provisioner "local-exec" {
-#   #   command = "echo The server's IP address is ${self.private_ip} > ip.txt" 
-#   # }
+resource "aws_instance" "example" {
+  ami                    = data.aws_ami.ubuntu.id
+  instance_type          = "t2.micro"
+  vpc_security_group_ids = [aws_security_group.allow_tls.id]
+  
+  # provisioner "local-exec" {
+  #   command = "echo The server's IP address is ${self.private_ip} > ip.txt" 
+  # }
 
-#   connection {
-#     type     = "ssh"
-#     user     = "ec2-user"
-#     password = "DevOps321"
-#     host     = self.public_ip
-#   }
+  # connection {
+  #   type     = "ssh"
+  #   user     = "ec2-user"
+  #   password = "DevOps321"
+  #   host     = self.public_ip
+  # }
 
-#   provisioner "remote-exec" {
-#     inline = [
-#       "sudo dnf install ansible -y",
-#       "sudo dnf install nginx -y",
-#       "sudo systemctl start nginx"
-#     ]
-#   }
-# }
+  # provisioner "remote-exec" {
+  #   inline = [
+  #     "sudo dnf install ansible -y",
+  #     "sudo dnf install nginx -y",
+  #     "sudo systemctl start nginx"
+  #   ]
+  # }
+}
